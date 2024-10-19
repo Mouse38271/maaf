@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Permintaan Maaf Romantis</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+      }
+      #message {
+        margin-top: 50px;
+        font-size: 24px;
+      }
+      #response {
+        font-size: 18px;
+        color: #ff3333; /* Warna merah untuk menampilkan respons */
+        margin-top: 20px;
+      }
+      img {
+        max-width: 300px;
+        border-radius: 50%;
+        margin-top: 20px;
+      }
+      button {
+        padding: 10px 20px;
+        font-size: 18px;
+        margin: 10px;
+        border: none;
+        background-color: #ff3333;
+        color: #fff;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+      }
+      button:hover {
+        background-color: #ff6666;
+      }
+      #btnTime {
+        position: relative;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="message">
+      <p>Hai Sayang,</p>
+      <p>Aku ingin mengucapkan permintaan maaf yang sangat mendalam.</p>
+      <p>Sungguh, aku sangat menyesal telah membuat kesalahan.</p>
+      <p><strong>Maafkan aku, karena aku tidak bermaksud melukaimu.</strong></p>
+    </div>
+    <div id="response">
+      <!-- Tempat untuk menampilkan respons -->
+    </div>
+    <img src="a.jpg" alt="Love Image" />
+    <script>
+      // Fungsi untuk menampilkan respons
+      function respondToApology(response) {
+        document.getElementById("response").innerText = response;
+      }
+
+      // Fungsi untuk memindahkan tombol "Aku butuh waktu"
+      function moveButton() {
+        const btnTime = document.getElementById("btnTime");
+        let randomX = Math.random() * (window.innerWidth - btnTime.offsetWidth);
+        let randomY =
+          Math.random() * (window.innerHeight - btnTime.offsetHeight);
+
+        // Pastikan tombol tetap di dalam layar
+        randomX = Math.max(
+          0,
+          Math.min(randomX, window.innerWidth - btnTime.offsetWidth)
+        );
+        randomY = Math.max(
+          0,
+          Math.min(randomY, window.innerHeight - btnTime.offsetHeight)
+        );
+
+        btnTime.style.position = "absolute";
+        btnTime.style.left = randomX + "px";
+        btnTime.style.top = randomY + "px";
+      }
+
+      // Menampilkan pilihan respons dengan tombol
+      function showResponseOptions() {
+        document.getElementById("message").innerHTML =
+          "<p>Apakah kamu bisa memaafkanku?</p>";
+        document.getElementById("response").innerHTML =
+          '<button onclick="sendToWhatsApp()">Tentu ❤️</button> <button id="btnTime" onclick="moveButton()">Aku butuh waktu 😔</button>';
+      }
+
+      // Buka WhatsApp dengan pesan maaf
+      function sendToWhatsApp() {
+        const message = "Aku memaafkanmu, Sayang ❤️";
+        const phoneNumber = "6289508981055"; // Ganti dengan nomor WhatsApp tujuan
+        const waLink = `https://wa.me/${6289508981055}?text=${encodeURIComponent(
+          message
+        )}`;
+        window.open(waLink, "_blank");
+      }
+
+      // Menampilkan pertanyaan setelah halaman dimuat
+      window.onload = function () {
+        setTimeout(showResponseOptions, 3000); // Tampilkan setelah 3 detik
+      };
+    </script>
+  </body>
+</html>
